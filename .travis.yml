@@ -2,5 +2,5 @@ language: swift
 osx_image: xcode10.1
 
 xcode_workspace: CotEditor.xcworkspace
-xcode_scheme: CotEditor
+xcode_scheme: CotEditor -AppStore
 xcodebuild_args: CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" CODE_SIGN_ENTITLEMENTS=""
