@@ -67,6 +67,7 @@
 "Scheme script" = "Scheme-Skript";
 "Shell script" = "Shell-Skript";
 "SQL source" = "SQL-Quellcode";
+"Solidity source" = "Solidity-Quellcode";
 "Swift source" = "Swift-Quellcode";
 "TeX" = "TeX";
 "Textile document" = "Textile-Dokument";

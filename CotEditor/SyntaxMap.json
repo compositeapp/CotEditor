@@ -591,6 +591,18 @@
       "zsh"
     ]
   },
+  "Solidity": {
+    "extensions": [
+      "sol",
+      "pac"
+    ],
+    "filenames": [
+
+    ],
+    "interpreters": [
+
+    ]
+  },
   "Swift": {
     "extensions": [
       "swift"
