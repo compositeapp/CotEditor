@@ -1246,8 +1246,14 @@ keywords:
 - beginString: "with"
 - beginString: "yield"
 variables:
-- beginString: "arguments"
 - beginString: "this"
+- beginString: "msg"
+- beginString: "block"
+- beginString: "tx"
+- beginString: "abi"
+- beginString: "0x[a-fA-F0-9]{40}$"
+ignoreCase: true
+regularExpression: true
 commentDelimiters:
   endDelimiter: "*/"
   beginDelimiter: "/*"
