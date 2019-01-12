@@ -13,8 +13,8 @@ outlineMenu:
 - beginString: "^([\\t ]*)(function)([^{]*)\\{"
   keyString: "$1$2 : $3"
   description: "function"
-- beginString: "^([\\t ]*)(constructor +)(\\w+\\(.*\\))[\\t ]*(?=\\{)"
-  keyString: "$1$3"
+- beginString: "^([\\t ]*)(constructor)([^{]*)\\{"
+  keyString: "$1$2$3"
   description: "method"
 - beginString: "^([\\t ]*)contract +(\\w+)[\\t ]+(is[\\t ](.+?)(\\{|$))?"
   bold: true
