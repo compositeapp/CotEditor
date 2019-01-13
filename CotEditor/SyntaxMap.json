@@ -593,8 +593,7 @@
   },
   "Solidity": {
     "extensions": [
-      "sol",
-      "pac"
+      "sol"
     ],
     "filenames": [
 
