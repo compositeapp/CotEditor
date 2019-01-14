@@ -8,7 +8,7 @@
 //
 //  ---------------------------------------------------------------------------
 //
-//  © 2018 1024jp
+//  © 2018-2019 1024jp
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import Cocoa
 
 final class PreferencesTabViewController: NSTabViewController {
     
-    private var lastFrame: NSRect?
+    private var lastFrameSize: NSSize?
     
     
     
@@ -58,8 +58,14 @@ final class PreferencesTabViewController: NSTabViewController {
         {
             self.selectedTabViewItemIndex = item.offset
         }
+    }
+    
+    
+    override func viewWillAppear() {
         
-        self.switchPane(to: self.tabViewItems[self.selectedTabViewItemIndex], animated: false)
+        super.viewWillAppear()
+        
+        self.view.window!.title = self.tabViewItems[self.selectedTabViewItemIndex].label
     }
     
     
@@ -67,11 +73,7 @@ final class PreferencesTabViewController: NSTabViewController {
         
         super.tabView(tabView, willSelect: tabViewItem)
         
-        if let frame = self.lastFrame {
-            tabView.selectedTabViewItem?.view?.frame = frame
-        }
-        
-        self.lastFrame = tabViewItem?.view?.frame
+        self.lastFrameSize = tabViewItem?.view?.frame.size
     }
     
     
@@ -81,7 +83,7 @@ final class PreferencesTabViewController: NSTabViewController {
         
         guard let tabViewItem = tabViewItem else { return assertionFailure() }
         
-        self.switchPane(to: tabViewItem, animated: true)
+        self.switchPane(to: tabViewItem)
     }
     
     
@@ -89,25 +91,19 @@ final class PreferencesTabViewController: NSTabViewController {
     // MARK: Private Methods
     
     /// resize window to fit to new view
-    private func switchPane(to tabViewItem: NSTabViewItem, animated: Bool) {
+    private func switchPane(to tabViewItem: NSTabViewItem) {
         
-        guard let viewFrame = self.lastFrame ?? tabViewItem.view?.frame else { return assertionFailure() }
+        guard let contentSize = self.lastFrameSize ?? tabViewItem.view?.frame.size else { return assertionFailure() }
         
         // initialize tabView's frame size
         guard let window = self.view.window else {
-            self.view.frame = viewFrame
+            self.view.frame.size = contentSize
             return
         }
         
-        // calculate window frame
-        var frame = window.frameRect(forContentRect: viewFrame)
-        frame.origin = window.frame.origin
-        frame.origin.y += window.frame.height - frame.height
-        
-        self.view.isHidden = true
-        NSAnimationContext.runAnimationGroup({ context in
-            context.allowsImplicitAnimation = animated
-            window.setFrame(frame, display: false)
+        NSAnimationContext.runAnimationGroup({ _ in
+            self.view.isHidden = true
+            window.animator().setFrame(for: contentSize)
             
         }, completionHandler: { [weak self] in
             self?.view.isHidden = false
@@ -150,6 +146,22 @@ private extension PreferencesTabViewController {
             
             item.label = localized
         }
+    }
+    
+}
+
+
+
+private extension NSWindow {
+    
+    /// calculate window frame for the given contentSize
+    func setFrame(for contentSize: NSSize, flag: Bool = false) {
+        
+        let frameSize = self.frameRect(forContentRect: NSRect(origin: .zero, size: contentSize)).size
+        let frame = NSRect(origin: self.frame.origin, size: frameSize)
+            .offsetBy(dx: 0, dy: self.frame.height - frameSize.height)
+        
+        self.setFrame(frame, display: flag)
     }
     
 }
