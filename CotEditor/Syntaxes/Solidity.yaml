@@ -10,8 +10,6 @@ metadata:
   license: "Same as CotEditor"
   lastModified: "2019-01-11"
 
-completions: []
-
 outlineMenu:
 - beginString: "^([\\t ]*)(function)([^{]*)\\{"
   keyString: "$1$2 : $3"
@@ -155,3 +153,7 @@ numbers:
 - beginString: "\\b0x[0-9a-f]+\\b"
   ignoreCase: true
   regularExpression: true
+
+completions:
+- keyString: "contract"
+- keyString: "struct"
