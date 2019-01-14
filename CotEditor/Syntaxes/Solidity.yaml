@@ -4,7 +4,7 @@ extensions:
 filenames: []
 
 metadata:
-  author: "Ronald Mannak"
+  author: "ronaldmannak"
   distributionURL: "https://coteditor.com"
   version: "0.5"
   license: "Same as CotEditor"
@@ -25,175 +25,153 @@ outlineMenu:
   keyString: "Contract $1$2 inherits from $4"
 
 keywords:
+#control
 - beginString: "if"
 - beginString: "else"
+- beginString: "for"
 - beginString: "while"
 - beginString: "do"
-- beginString: "^([\\t ]*)for"
-  regularExpression: true
 - beginString: "break"
 - beginString: "continue"
+- beginString: "throw"
+- beginString: "returns"
+
+- beginString: "using"
+- beginString: "import"
+- beginString: "pragma"
+
+- beginString: "new"
+- beginString: "delete"
+- beginString: "emit"
+
+- beginString: "contract"
+- beginString: "is"
+- beginString: "interface"
+- beginString: "library"
+
+- beginString: "struct"
+- beginString: "event"
+- beginString: "constructor"
+- beginString: "enum"
+- beginString: "function"
+- beginString: "modifier"
+- beginString: "mapping"
+- beginString: "let"
 - beginString: "return"
 
 commands:
-- beginString: "\\bassert(?=\\()"
-  regularExpression: true
-- beginString: "\\brequire(?=\\()"
-  regularExpression: true
-- beginString: "\\brevert(?=\\()"
-  regularExpression: true
-- beginString: "\\bthrow(?=\\()"
-  regularExpression: true
-- beginString: "\\bcall(?=\\()"
-  regularExpression: true
-- beginString: "\\btransfer(?=\\()"
-  regularExpression: true
-- beginString: "\\bsend(?=\\()"
-  regularExpression: true
-- beginString: "\\bdelegatecall(?=\\()"
-  regularExpression: true
-- beginString: "\\bcallcode(?=\\()"
-  regularExpression: true
-- beginString: "\\bbalance(?=\\()"
-  regularExpression: true
-- beginString: "delete"
-
-- beginString: "\\bthis(?=\\()"
-  regularExpression: true
-- beginString: "\\bselfdestruct(?=\\()"
-  regularExpression: true
-- beginString: "\\bsuicide(?=\\()"
+# generic command match
+- beginString: "\\b([A-Za-z_]\\w*)\\s*(?=\\()"
   regularExpression: true
 
+- beginString: "\\b(require|assert|revert)\\b"
+  regularExpression: true
+- beginString: "\\b(selfdestruct|suicide)\\b"
+  regularExpression: true
+
+#- beginString: "\\bcall(?=\\()"
+#  regularExpression: true
+#- beginString: "\\btransfer(?=\\()"
+#- beginString: "\\bsend(?=\\()"
+#  regularExpression: true
+#- beginString: "\\bdelegatecall(?=\\()"
+#  regularExpression: true
+#- beginString: "\\bcallcode(?=\\()"
+#  regularExpression: true
+# beginString: "\\bbalance(?=\\()"
+#  regularExpression: true
 # block
-- beginString: "(?<=block\\.)\\bblockhash(?=\\()"
-  regularExpression: true
-- beginString: "(?<=block\\.)\\bcoinbase(?=\\()"
-  regularExpression: true
-- beginString: "(?<=block\\.)\\bdifficulty(?=\\()"
-  regularExpression: true
-- beginString: "(?<=block\\.)\\bgaslimit(?=\\()"
-  regularExpression: true
-- beginString: "(?<=block\\.)\\bnumber(?=\\()"
-  regularExpression: true
-- beginString: "(?<=block\\.)\\btimestamp(?=\\()"
-  regularExpression: true
-- beginString: "(?<=block\\.)\\bnow(?=\\()"
-  regularExpression: true
-
+#- beginString: "(?<=block\\.)\\bblockhash(?=\\()"
+# regularExpression: true
+# beginString: "(?<=block\\.)\\bcoinbase(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=block\\.)\\bdifficulty(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=block\\.)\\bgaslimit(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=block\\.)\\bnumber(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=block\\.)\\btimestamp(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=block\\.)\\bnow(?=\\()"
+#  regularExpression: true
 # msg
-- beginString: "(?<=msg\\.)\\bdata(?=\\()"
-  regularExpression: true
-- beginString: "(?<=msg\\.)\\bgas(?=\\()"
-  regularExpression: true
-- beginString: "(?<=msg\\.)\\bsender(?=\\()"
-  regularExpression: true
-- beginString: "(?<=msg\\.)\\bsig(?=\\()"
-  regularExpression: true
-- beginString: "(?<=msg\\.)\\bvalue(?=\\()"
-  regularExpression: true
-
+#- beginString: "(?<=msg\\.)\\bdata(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=msg\\.)\\bgas(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=msg\\.)\\bsender(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=msg\\.)\\bsig(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=msg\\.)\\bvalue(?=\\()"
+#  regularExpression: true
 # tx
-- beginString: "(?<=tx\\.)\\bgasprice(?=\\()"
-  regularExpression: true
-- beginString: "(?<=tx\\.)\\borigin(?=\\()"
-  regularExpression: true
-
+#- beginString: "\\b(blockhash|gasleft)\\b"
+#  regularExpression: true
+#- beginString: "(?<=tx\\.)\\bgasprice(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=tx\\.)\\borigin(?=\\()"
+#  regularExpression: true
 # math
-- beginString: "\\baddmod(?=\\()"
-  regularExpression: true
-- beginString: "\\bmulmod(?=\\()"
-  regularExpression: true
-- beginString: "\\bkeccak256(?=\\()"
-  regularExpression: true
-- beginString: "\\bsha256(?=\\()"
-  regularExpression: true
-- beginString: "\\bsha3(?=\\()"
-  regularExpression: true
-- beginString: "\\bripemd160(?=\\()"
-  regularExpression: true
-- beginString: "\\becrecover(?=\\()"
-  regularExpression: true
+#- beginString: "\\b(addmod|mulmod|keccak256|sha256|sha3|ripemd160|ecrecover)\\b"
+#  regularExpression: true
+# abi
+#- beginString: "(?<=abi\\.)\\bencode(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=abi\\.)\\bencodePacked(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=abi\\.)\\bencodeWithSelector(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=abi\\.)\\bencodeWithSignature(?=\\()"
+#  regularExpression: true
+#- beginString: "(?<=abi\\.)\\bencodeWithSelector(?=\\()"
+#  regularExpression: true
 
 # safemath
-- beginString: "\\bmul(?=\\()"
-  regularExpression: true
-- beginString: "\\bdiv(?=\\()"
-  regularExpression: true
-- beginString: "\\bsub(?=\\()"
-  regularExpression: true
-- beginString: "\\badd(?=\\()"
-  regularExpression: true
-- beginString: "\\bmod(?=\\()"
-  regularExpression: true
+#- beginString: "\\bmul(?=\\()"
+#  regularExpression: true
+#- beginString: "\\bdiv(?=\\()"
+#  regularExpression: true
+#- beginString: "\\bsub(?=\\()"
+#  regularExpression: true
+#- beginString: "\\badd(?=\\()"
+#  regularExpression: true
+#- beginString: "\\bmod(?=\\()"
+#  regularExpression: true
 
 attributes:
 - beginString: "public"
 - beginString: "private"
+
 - beginString: "internal"
 - beginString: "external"
+
 - beginString: "pure"
+- beginString: "constant"
+- beginString: "view"
 - beginString: "payable"
-- beginString: "modifier"
-- beginString: "function"
-- beginString: "returns"
-- beginString: "contract"
-- beginString: "new"
-- beginString: "is"
-- beginString: "interface"
-- beginString: "event"
-- beginString: "emit"
-- beginString: "using"
-- beginString: "(?<=\\w\\s)for"
-  regularExpression: true
+- beginString: "nonpayable"
+- beginString: "inherited"
+- beginString: "indexed"
+- beginString: "storage"
+- beginString: "memory"
 
 types:
 - beginString: "address"
-- beginString: "bool"
 - beginString: "string"
-- beginString: "bytes"
-- beginString: "bytes([1-9]|[12][0-9]|3[012])\\b"
+- beginString: "bool"
+- beginString: "bytes([1-9]|[12][0-9]|3[012])?\\b"
   regularExpression: true
-- beginString: "int"
-- beginString: "int8"
-- beginString: "int16"
-- beginString: "int24"
-- beginString: "int32"
-- beginString: "int40"
-- beginString: "int48"
-- beginString: "int56"
-- beginString: "int64"
-- beginString: "int72"
-- beginString: "int80"
-- beginString: "int88"
-- beginString: "int96"
-- beginString: "int112"
-- beginString: "int120"
-- beginString: "int128"
-- beginString: "int256"
-- beginString: "uint"
-- beginString: "uint8"
-- beginString: "uint16"
-- beginString: "uint32"
-- beginString: "uint40"
-- beginString: "uint48"
-- beginString: "uint56"
-- beginString: "uint64"
-- beginString: "uint72"
-- beginString: "uint80"
-- beginString: "uint88"
-- beginString: "uint96"
-- beginString: "uint112"
-- beginString: "uint120"
-- beginString: "uint128"
-- beginString: "uint256"
-- beginString: "enum"
-- beginString: "struct"
-- beginString: "\\bmapping(?=\\()"
+- beginString: "int\\d*"
   regularExpression: true
+- beginString: "uint\\d*"
+  regularExpression: true
+- beginString: "assembly"
 
 variables:
 - beginString: "this"
+- beginString: "super"
 - beginString: "msg"
 - beginString: "block"
 - beginString: "tx"
@@ -203,31 +181,33 @@ variables:
   regularExpression: true
 
 values:
+- beginString: "true"
+- beginString: "false"
+- beginString: "ether"
 - beginString: "wei"
 - beginString: "finney"
 - beginString: "szabo"
-- beginString: "ether"
 - beginString: "seconds"
 - beginString: "minutes"
 - beginString: "hours"
 - beginString: "days"
 - beginString: "weeks"
 - beginString: "years"
-- beginString: "false"
-- beginString: "true"
 
 characters:
-- beginString: "/\\S+/[gimy]*\\b"
-  regularExpression: true
+- beginString: ";"
+- beginString: "."
+- beginString: ","
+- beginString: "=>"
 
 comments:
 - beginString: "^#\\!/.*"
   regularExpression: true
 
 commentDelimiters:
-  endDelimiter: "*/"
-  beginDelimiter: "/*"
-  inlineDelimiter: "//"
+endDelimiter: "*/"
+beginDelimiter: "/*"
+inlineDelimiter: "//"
 
 strings:
 - beginString: "\""
@@ -238,14 +218,11 @@ strings:
   endString: "`"
 
 numbers:
-- beginString: "\\b0b[01]+\\b"
-  ignoreCase: true
+# decimal
+- beginString: "\\b(\\d+(\\.\\d+)?)\\b"
   regularExpression: true
-- beginString: "\\b0o[0-7]+\\b"
-  ignoreCase: true
-  regularExpression: true
+
+# hex
 - beginString: "\\b0x[0-9a-f]+\\b"
   ignoreCase: true
-  regularExpression: true
-- beginString: "\\b\\d+\\b"
   regularExpression: true
