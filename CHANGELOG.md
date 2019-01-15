@@ -2,6 +2,15 @@
 Change Log
 ==========================
 
+3.7.0-beta.5 (unreleased)
+--------------------------
+
+### Fixes
+
+- [beta] Fix multi-cursor behavior with `→` and `←` when something is selected.
+
+
+
 3.7.0-beta.4 (327)
 --------------------------
 
@@ -68,12 +77,15 @@ Change Log
 
 
 
-3.6.12 (unreleased)
+3.6.12 (311)
 --------------------------
 
 ### Improvements
 
 - Update syntax style for “SVG”.
+- Update `cot` command-line tool:
+    - Fix an issue where stack trace displayed when using `--wait` option with some clients other than Terminal.app.
+    - Fix an issue where `--column` could misplace the insertion point when a negative number was given.
 
 
 ### Fixes
